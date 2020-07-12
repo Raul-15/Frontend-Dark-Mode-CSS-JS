@@ -1,0 +1,444 @@
+/*Se coloca un border en cada p y span para dibujar sus formas y ubicarse bien si hay algun error*/
+
+
+/*Se utilizara grid para que en este proyect todas las separaciones sean de la misma dimension*/
+
+
+/*:root es una pseudo clase*/
+
+
+/*Los card se bordean con puntos imaginarios ----- display: grid;*/
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --cardGray: #252b43;
+        --gray: #8088ad;
+        --lightGray: #1d2029;
+        --baseBackground: #1d2029;
+        --baseColor: white;
+        --cardTitle: #8088ad;
+        --switchSpinner: #282943;
+        --switch: linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+    }
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    color: var(--baseColor);
+    background: var(--baseBackground);
+}
+
+ :root {
+    --limegGreen: hsl(163, 72%, 41%);
+    --brightRed: hsl(356, 69%, 56%);
+    --facebook: #168ef4;
+    --twitter: hsl(203, 89%, 53%);
+    --instagram: hsl(37, 97%, 70%);
+    --instagram-2: hsl(329, 70%, 58%);
+    --youtube: hsl(348, 97%, 39%);
+    --gray: #5f616d;
+    --cardGray: #f0f3fa;
+    --lightGray: #f8f9fe;
+    --cardTitle: #6f717e;
+    --baseBackground: white;
+    --baseColor: #1d2029;
+    --switchSpinner: white;
+    --switch: #5f616d;
+}
+
+
+/*START CARDS*/
+
+
+/*
+background: #f0f3fa; Color humo
+______________________________
+.wrapper {
+    0 arriba y abajo || 40 a los costados
+    padding: 0 40px;
+}
+*/
+
+.wrapper {
+    padding: 0 30px;
+}
+
+.grid {
+    /*Los card se bordean con puntos imaginarios*/
+    display: grid;
+    grid-row-gap: 25px;
+}
+
+.dark-mode {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1em;
+}
+
+
+/*~ : Selector adyacente, .checkbox:checked~.switch = selecciona otro selector de otro lado si se compruba la orden*/
+
+.checkbox {
+    display: none;
+}
+
+.checkbox:checked~.switch:before {
+    transform: translateX(0);
+}
+
+.switch {
+    /*  border: 1px solid red;*/
+    height: 40px;
+    display: block;
+    border-radius: 20px;
+    background: var(--switch);
+    width: 80px;
+    padding: 5px;
+    /*box-sizing: border-box; para que no se haga mas grande el circulo*/
+    box-sizing: border-box;
+    cursor: pointer;
+    user-select: none;
+}
+
+.switch::before {
+    content: "";
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: var(--switchSpinner);
+    border-radius: 50%;
+    /*transform: translateX(40px); = sirve para mover al otro lado el elemento*/
+    transform: translateX(40px);
+    transition: 0.3s;
+    /* will-change: transform; = Para que tenga mas performance en transform*/
+    will-change: transform;
+}
+
+
+/*START HEADERS*/
+
+.header {
+    /*border: 1px solid red;*/
+    background: var(--lightGray);
+    padding-bottom: 100px;
+    border-radius: 0 0 20px 20px;
+    padding-top: 2em;
+    /*desaparece un elemento en el navegador para editar otro que esta mas abajo */
+    /* display: none;*/
+}
+
+.header-total {
+    color: var(--gray);
+    margin: 0.5em 0;
+    font-weight: 600;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 1.5em;
+}
+
+
+/*END HEADERS*/
+
+
+/*START TOP CARD*/
+
+.top-cards {
+    /*border: 1px solid red;*/
+    /*Retroce el contenedor cards*/
+    margin-top: -50px;
+    /*desaparece un elemento en el navegador*/
+    /*display: none;*/
+    margin-bottom: 3em;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.7em;
+}
+
+
+/*END TOP CARD*/
+
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--cardGray);
+    text-align: center;
+    padding: 1.7em 0;
+    /* start Alinear bien la linea del card*/
+    position: relative;
+    /* end Alinear bien la linea del card*/
+}
+
+.card:before {
+    content: "";
+    height: 4px;
+    display: block;
+    /*start Alinear bien la linea del card*/
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    /*end Alinear bien la linea del card*/
+}
+
+.card.facebook::before {
+    background-color: var(--facebook);
+}
+
+.card.twitter::before {
+    background-color: var(--twitter);
+}
+
+.card.instagram::before {
+    /*Degradado*/
+    background-image: linear-gradient( to right, var(--instagram) 0%, var(--instagram-2) 100%);
+}
+
+.card.youtube::before {
+    background-color: var(--youtube);
+}
+
+
+/* Inicia Centrar icono con nombre*/
+
+.card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cardTitle);
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.card-title img {
+    margin-right: 5px;
+}
+
+
+/* Fin Centrar icono con nombre*/
+
+.card-followers {}
+
+.card-followers-number {
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.card-followers-title {
+    /*este display es para que se ponga abajo de 1992*/
+    display: block;
+    text-transform: uppercase;
+    color: var(--cardTitle);
+    /*Inicia separacion de letras*/
+    letter-spacing: 6px;
+    /*Termina separacion de letras*/
+    font-size: 0.8em;
+    /**/
+}
+
+
+/*END CARDS*/
+
+.card-today {
+    /**/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /**/
+    margin-top: 20px;
+    color: var(--limegGreen);
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+.card-today img {
+    margin-right: 5px;
+}
+
+
+/*start overview*/
+
+.overview {
+    /* border: 1px solid red;*/
+    padding-bottom: 2em;
+}
+
+h2 {
+    color: var(--gray);
+}
+
+.card-small {
+    /* border: 1px solid red;*/
+    /*display: grid amplia el espaciado de las filas*/
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; = divide en dos lados el grid*/
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 1em;
+    background: var(--cardGray);
+    border-radius: 8px;
+    padding: 1.7em;
+}
+
+.card-small p {
+    margin: 0;
+}
+
+.card-small-views {
+    /*border: 1px solid red;*/
+    color: var(--cardTitle);
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.card-small-icon {
+    /*  border: 1px solid red;*/
+    text-align: right;
+}
+
+.card-small-number {
+    /* border: 1px solid red;*/
+    font-weight: bold;
+    font-size: 2.5em;
+    /* line-height: .9em; = sirve para reducir las lineas o alinearlas*/
+    line-height: 0.9em;
+}
+
+.card-small-percentage {
+    /*  border: 1px solid red;*/
+    text-align: right;
+    /*  display: flex; =Se flexiona hasta el otro lado, izquierda*/
+    display: flex;
+    /*  align-items: flex-end; =Se baja el elemento*/
+    align-items: flex-end;
+    color: var(--limegGreen);
+    justify-content: flex-end;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+
+/* START la flechita se pone al medio del porcentaje*/
+
+.card-small-percentage span {
+    /*border: 1px solid red;*/
+    display: flex;
+    align-items: center;
+}
+
+.card-small-percentage img {
+    margin-right: 5px;
+}
+
+.card-small-percentage.is-danger span {
+    color: var(--brightRed);
+}
+
+
+/* END la flechita se pone al medio del porcentaje*/
+
+
+/*end overview*/
+
+
+/*Start ancho pC*/
+
+@media screen and (min-width: 480px) {
+    .grid {
+        /* border: 1px solid green;*/
+        grid-template-columns: 1fr 1fr;
+        /*grid-column-gap: 2em; sirve para seprara los recuadros*/
+        grid-column-gap: 25px;
+    }
+    /*wrapper = sirve para ajustar mas los lados de las paginas*/
+    .wrapper {
+        max-width: 1140px;
+        /*margin:auto;  = lo centra por ti*/
+        margin: auto;
+    }
+}
+
+
+/*End ancho pC*/
+
+@media screen and (min-width: 768px) {
+    .grid {
+        /*border: 1px solid green;*/
+        grid-template-columns: 1fr 1fr 1fr;
+        /*grid-column-gap: 2em; sirve para seprara los recuadros*/
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .grid {
+        /* border: 1px solid green;*/
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        /*grid-column-gap: 2em; sirve para seprara los recuadros*/
+    }
+    .header-total {
+        border: none;
+    }
+    .header-grid {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+    }
+}
+
+.is-dark-mode {
+    --cardGray: #252b43;
+    --gray: #8088ad;
+    --lightGray: #1d2029;
+    --baseBackground: #1d2029;
+    --baseColor: white;
+    --cardTitle: #8088ad;
+    --switchSpinner: #282943;
+    --switch: linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+}
+
+.is-light-mode {
+    --gray: #5f616d;
+    --cardGray: #f0f3fa;
+    --lightGray: #f8f9fe;
+    --cardTitle: #6f717e;
+    --baseBackground: white;
+    --baseColor: #1d2029;
+    --switchSpinner: white;
+    --switch: #5f616d;
+}
+
+.is-white {
+    display: none;
+}
+
+.is-black {}
+
+
+/* }
+    .card-followers-title {
+        color: #8088ad;
+    }*/
+
+
+/* .card-title {
+        color: var(--gray);
+    }*/
+
+
+/*.card-small {
+        background: #252b43;
+    }*/
+
+
+/* .card-small-views {
+        color: #8088ad;
+    }*/
+
+
+/*.switch {
+        background:linear-gradient(to right, #4796d2 0%, #37ce8f 100%);
+    }*/
+
+
+/* .switch::before {
+        background: ;
+    }*/

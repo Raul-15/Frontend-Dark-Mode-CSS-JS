@@ -1,0 +1,12 @@
+
+PROGRAMAS: color sniper, captura los colores y te lanza codigo hexagesimal
+
+Me quede en 44:20
+
+seti monokai
+
+1:40:14
+
+** Se termino el proyecto salio bien en javascript se coloco un operador '!' para que funcione mejor el dark mode/light mode
+  
+*** El unico bug es:  que al cambia modo darkmode, debe ir darkmode o ligt mode si es el caso! Revisarlo y arreglarlo.
